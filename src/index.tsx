@@ -3,11 +3,36 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { extendTheme, ChakraProvider } from '@chakra-ui/react';
+
+interface brandColors {
+  [key: number]: string
+}
+
+interface colorInterface {
+  brand:brandColors
+}
+
+
+const colors:colorInterface = {
+  brand: {
+    100: '#292929',
+    200: '#FFFFFF',
+    300: '#000000',
+  }
+}
+
+
+const theme = extendTheme({ colors })
+
 
 ReactDOM.render(
+  <ChakraProvider theme={theme}>
+
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+      <App />
+  </React.StrictMode>
+  </ChakraProvider>,
   document.getElementById('root')
 );
 
